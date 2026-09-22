@@ -1,0 +1,1 @@
+Today I built a browser-side experience runtime using HTML and JavaScript modules. The runtime locates a DOM element and changes its text content. This models the rendering portion of an Adobe Target-style personalization workflow.
