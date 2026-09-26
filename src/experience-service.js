@@ -1,10 +1,22 @@
-export function getExperience() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(JSON.stringify({
-    experience: "summer-sale",
-    headline: "Summer Sale — 20% Off"
-}));
-        }, 1000);
-    });
+export async function getExperience() {
+    const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts/1?source=martech",
+            {
+        headers: {
+            "Accept": "application/json"
+        }
+    }
+    );
+
+    console.log("HTTP response:", response);
+    if (!response.ok) {
+    throw new Error(`API request failed: ${response.status}`);
+}
+
+    const data = await response.json();
+
+    return {
+        experience: "api-test",
+        headline: data.title
+    };
 }
